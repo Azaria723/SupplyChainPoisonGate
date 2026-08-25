@@ -26,10 +26,21 @@ The prompt treats fetched material as untrusted data, requires valid DIFF and TR
 - Preserve honest, reproducible evidence: distinguish local checks, simulated matrices, and actual on-chain transactions.
 - Keep the repository contract-focused; no mock frontend or copied application shell.
 
+## Lessons from strong Studionet evidence reports
+
+A strong verification file is more than a list of transaction hashes. It should make every claim independently checkable and distinguish execution layers that can succeed or fail separately.
+
+- Pin the network, contract address, deployment evidence, and deployed/local source parity at the top.
+- Use a scenario matrix with exact inputs, expected result, transaction evidence, consensus result, and authoritative state readback.
+- Link every retained transaction hash directly to Explorer instead of requiring reviewers to search manually.
+- Include negative paths such as authorization failure, duplicate submission, invalid state transition, and commitment mismatch; a contract is not fully evidenced by one happy path.
+- Treat consensus acceptance, contract-state mutation, and deferred external-message delivery as three different claims. One does not prove the others.
+- End with explicit completion gates (`PASS`, `FAIL`, `PARTIAL`, or `NOT RUN`) and never upgrade missing or failed evidence to `PASS`.
+- Preserve limitations in the primary evidence document. In this deployment, both outbound GEN messages failed even though adjudication and withdrawal state transitions were accepted, so token settlement remains unproven.
+
 ## Known limitations
 
 - Host allowlisting reduces arbitrary-web input but does not establish repository ownership.
 - No time oracle is used, so there is no deadline-based cancellation. The maintainer cannot withdraw while a report is open; adjudication is permissionless.
 - Validator analysis is bounded to three evidence bodies, each capped at 256 KB and truncated to 3,500 characters in the prompt.
 - This is a testnet-oriented prototype, not an audited production insurance product.
-

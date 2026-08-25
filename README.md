@@ -44,4 +44,4 @@ Verified locally on 2026-08-25: linter and semantic validation passed, typecheck
 
 The deployment is verified by reading `gen_getContractCode`. A benign lifecycle subsequently completed its contract-state transitions on Studionet: bond and report-deposit accounting, three pinned HTTPS commitments, manifest sealing, multi-validator adjudication (`NOT_PROVEN`), and withdrawal state transition. The two deferred outbound GEN messages failed in Studionet, so successful token settlement is **not** claimed. See [evidence/studionet-lifecycle-2026-08-25.md](evidence/studionet-lifecycle-2026-08-25.md).
 
-See [contract.md](contract.md) for the design and threat model and [evidence/verification.md](evidence/verification.md) for exact evidence claims.
+See [contract.md](contract.md) for the design and threat model, [verification/studionet-e2e.md](verification/studionet-e2e.md) for the submission-ready evidence matrix, and [evidence/verification.md](evidence/verification.md) for local verification details.
